@@ -1,0 +1,369 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+img {display: block;}
+div {display: block;}
+p {display: block;}
+
+/* VARIABLES */
+:root {
+    /* COLORS */
+    --color-primary: rgba(0, 0, 0, 0.8);
+    --color-secondary: rgba(0, 0, 0, 0.5); 
+    --color-background: rgb(255, 255, 255, 1);
+    --color-accent-2: rgb(165, 165, 240, 0.6);
+    /* TEXT */
+    --big-text: 2rem;
+    --normal-text: clamp(0.9rem, 2.5vw, 1rem);
+    --small-text: 0.9rem;
+    --line-height: clamp(1.3rem, 2.5vw, 1.5rem);
+    /* IMAGES */
+    --image-border-radius: 8px;
+    /* SPACING */
+    --padding: 1rem;
+    --margin: 2rem;
+    --gap: 2rem;
+    /* SMOOTH SCROLLING */
+    scroll-behavior: smooth;
+    /* STYLES */
+    --shadows: 0px 0px 2px var(--color-secondary);
+    --borders: 3px solid rgb(255, 255, 255, 0.9);
+    /* FILTERS */
+    --blur: blur(100px);
+}
+
+/* UTILITY CLASSES */
+.nowrap {
+    white-space: nowrap;
+}
+.offscreen {
+    position: absolute;
+    left: -100000px;
+}
+.box-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* CONTAINERS */
+.name {
+    padding: 0.75rem 0;
+    max-width: 50%;
+    backdrop-filter: blur(5px);
+}
+.left-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: sticky;
+    top: 3.25rem;
+    padding: var(--padding);
+    align-self: start;
+}
+.right-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.container-grid {
+    width: 100%;
+    /* margin: 0rem auto; */
+    padding: var(--padding);
+    display: grid;  
+    grid-template-columns: repeat(auto-fill, minmax(150px, 200px));
+    gap: var(--gap);
+}
+
+.container-text {
+    width: 100%;
+    padding: var(--padding);
+    justify-content: end; 
+    margin-left: auto;    
+    gap: var(--gap);
+}
+
+.art-thumbnail {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    cursor: pointer;
+    pointer-events: auto; 
+}
+
+.art-thumbnail:hover {
+    box-shadow: 0px 5px 8px var(--color-secondary);
+}
+
+.art-thumbnail img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(0.2);
+    object-fit: cover;
+    flex: 1 1 auto;
+    display: block;
+    cursor: pointer !important;
+    transform-origin: center center;
+    object-position: top;
+}
+
+.art-thumbnail img:hover {
+    mix-blend-mode: normal;
+    filter: none;
+}
+
+.art-img {
+    width: 200px;    
+}
+
+.title {
+    color: var(--color-secondary);
+}
+
+.footnote {
+    font-size: var(--small-text);
+    color: var(--color-secondary);
+}
+
+/* LINKS */
+a { 
+    color: var(--color-accent);
+    text-decoration: none;
+    will-change: color, transform;
+    cursor: pointer;
+}
+
+a:visited {
+    color: var(--color-primary);
+}
+
+a:hover,
+a:focus {
+    color: var(--color-secondary);
+    /* transform: translateY(-2px); */
+    /* text-decoration: underline; */
+    text-decoration-thickness: 1.2px;
+    outline: none;
+    /*  */
+    display: inline-block;
+    transition: transform 0.1s ease;
+}
+
+a:active {
+    transform: translateY(0);
+}
+
+/* Accessible focus ring */
+a:focus-visible {
+    outline: 3px solid rgba(163, 225, 6, 0.35);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+
+
+/* IMAGE MODAL */
+#imageModal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-background);
+    /* backdrop-filter: var(--blur); */
+    animation: fadeIn 0.3s ease;
+}
+
+#imageModal.active {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#imageModal img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    animation: zoomIn 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.modal-figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 90%;
+}
+
+.modal-caption {
+    font-size: small;
+    color: var(--color-secondary);
+    padding: var(--padding);
+    display: block;
+    justify-content: start;
+    max-width: 100%;
+    word-break: break-word;
+    line-height: 1.6;
+    text-align: center;
+    white-space: pre-line; /* Preserves line breaks and wraps text */
+}
+
+.modal-close {
+    position: fixed;
+    top: var(--padding);
+    right: var(--padding);
+    font-size: var(--normal-text);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 1000;
+}
+
+.modal-close:hover {
+    color: var(--color-secondary);
+}
+
+.modal-nav {
+    position: fixed;
+    bottom: var(--padding);
+    background: transparent;
+    border: none;
+    font-size: var(--normal-text);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    transition: color 0.3s ease;
+}
+
+.modal-nav:hover {
+    color: var(--color-secondary);
+}
+
+.modal-prev {
+    left: var(--padding);
+}
+
+.modal-next {
+    right: var(--padding);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* DEBUG: outlines clicked element briefly to help find overlays (remove when done) */
+.debug-clicked {
+    outline: 3px solid rgba(255, 0, 0, 0.9);
+    outline-offset: 4px;
+}
+
+/* LAYOUT */
+body {
+    line-height: var(--line-height);
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--normal-text);
+
+}
+header, footer {
+    width: 100%;
+    text-align: left;
+    justify-content: space-between;
+}
+header {
+    /* ?\CREAR COLOR DE FONT SIMULANDO UN CRITAL O UN PRISMA DONDE LA LUZ SE DESVIA
+    CON BLUR Y OPACITY */
+    padding: var(--padding);
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+
+footer {
+    position: sticky;
+    padding: var(--padding);
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    flex: 1;
+}
+
+
+ul {
+    list-style: none;
+    align-items: center;
+}
+
+li {
+    padding: 0.3rem 0;
+    width: 100%;
+    }
+
+p {
+    color: var(--color-secondary);
+}
+
+
+
+
+
+/* BREAKPOINTS */
+/* SM -> Pequeños (Small) */
+@media (min-width: 640px) { 
+    
+  
+}
+
+/* MD -> Medianos (Medium) */
+@media (min-width: 768px) { 
+ 
+    
+}
+
+/* LG -> Grandes (Large) */
+@media (min-width: 1024px) {
+   
+}
+
+/* XL -> Extra Grandes (Extra Large) */
+@media (min-width: 1280px) {
+
+}
+
+/* 2XL -> Doble Extra Grande (2X Extra Large) */
+@media (min-width: 1536px) { 
+   
+}
+
