@@ -17,7 +17,7 @@ p {display: block;}
     --color-background: rgb(255, 255, 255, 1);
     --color-accent-2: rgb(165, 165, 240, 0.6);
     /* TEXT */
-    --big-text: 2rem;
+    --big-text: 1rem;
     --normal-text: clamp(0.9rem, 2.5vw, 1rem);
     --small-text: 0.9rem;
     --line-height: clamp(1.3rem, 2.5vw, 1.5rem);
@@ -31,7 +31,7 @@ p {display: block;}
     scroll-behavior: smooth;
     /* STYLES */
     --shadows: 0px 0px 2px var(--color-secondary);
-    --borders: 3px solid rgb(255, 255, 255, 0.9);
+    --borders: 1px solid rgb(0, 0, 0 , 0.9);
     /* FILTERS */
     --blur: blur(100px);
 }
@@ -50,8 +50,11 @@ p {display: block;}
 
 /* CONTAINERS */
 .name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--big-text);
     padding: 0.75rem 0;
-    max-width: 50%;
     backdrop-filter: blur(5px);
 }
 .left-text {
@@ -59,7 +62,7 @@ p {display: block;}
     flex-direction: column;
     align-items: flex-start;
     position: sticky;
-    top: 3.25rem;
+    top: 4rem;
     padding: var(--padding);
     align-self: start;
 }
@@ -126,6 +129,7 @@ p {display: block;}
 
 .title {
     color: var(--color-secondary);
+    border-bottom: var(--borders);
 }
 
 .footnote {
@@ -135,6 +139,7 @@ p {display: block;}
 
 /* LINKS */
 a { 
+    font-size: 1rem;
     color: var(--color-accent);
     text-decoration: none;
     will-change: color, transform;
@@ -163,7 +168,7 @@ a:active {
 
 /* Accessible focus ring */
 a:focus-visible {
-    outline: 3px solid rgba(163, 225, 6, 0.35);
+    outline: 3px solid var(--color-accent-2);
     outline-offset: 4px;
     border-radius: 4px;
 }
@@ -280,7 +285,7 @@ a:focus-visible {
 /* .debug-clicked {
     outline: 3px solid rgba(255, 0, 0, 0.9);
     outline-offset: 4px;
-} */
+}  */
 
 /* LAYOUT */
 body {
@@ -301,8 +306,7 @@ header, footer {
     justify-content: space-between;
 }
 header {
-    /* ?\CREAR COLOR DE FONT SIMULANDO UN CRITAL O UN PRISMA DONDE LA LUZ SE DESVIA
-    CON BLUR Y OPACITY */
+    background-color: var(--color-background);
     padding: var(--padding);
     position: sticky;
     top: 0px;
@@ -324,6 +328,7 @@ main {
 ul {
     list-style: none;
     align-items: center;
+
 }
 
 li {
