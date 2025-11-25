@@ -277,10 +277,10 @@ a:focus-visible {
 }
 
 /* DEBUG: outlines clicked element briefly to help find overlays (remove when done) */
-.debug-clicked {
+/* .debug-clicked {
     outline: 3px solid rgba(255, 0, 0, 0.9);
     outline-offset: 4px;
-}
+} */
 
 /* LAYOUT */
 body {
