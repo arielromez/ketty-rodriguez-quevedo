@@ -3,8 +3,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
+
+
+
 img {display: block;}
 div {display: block;}
 p {display: block;}
@@ -55,13 +57,11 @@ p {display: block;}
     align-items: center;
     font-size: var(--big-text);
     padding: 0.75rem 0;
-    backdrop-filter: blur(5px);
 }
 .left-text {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    position: sticky;
     top: 4rem;
     padding: var(--padding);
     align-self: start;
@@ -72,6 +72,8 @@ p {display: block;}
     align-items: flex-end;
     justify-content: center;
 }
+
+
 
 .container-grid {
     width: 100%;
@@ -228,10 +230,12 @@ a:focus-visible {
 }
 
 .modal-close {
+
     position: fixed;
     top: var(--padding);
     right: var(--padding);
-    font-size: var(--normal-text);
+    font-size: var(--big-text
+    );
     cursor: pointer;
     transition: color 0.3s ease;
     z-index: 1000;
@@ -246,7 +250,7 @@ a:focus-visible {
     bottom: var(--padding);
     background: transparent;
     border: none;
-    font-size: var(--normal-text);
+    font-size: var(--big-text);
     padding: 0.5rem 1rem;
     cursor: pointer;
     z-index: 1000;
@@ -298,7 +302,6 @@ body {
     justify-content: space-between;
     align-items: center;
     font-size: var(--normal-text);
-
 }
 header, footer {
     width: 100%;
@@ -306,19 +309,24 @@ header, footer {
     justify-content: space-between;
 }
 header {
+    width: 100%;
     background-color: var(--color-background);
     padding: var(--padding);
-    position: sticky;
-    top: 0px;
-    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
 
 footer {
+    width: 100%;
     position: sticky;
     padding: var(--padding);
 }
 
 main {
+    width: 100%;
+    margin-top: 4rem;
     display: grid;
     grid-template-columns: repeat(2, minmax(150px, 1fr));
     flex: 1;
