@@ -14,21 +14,22 @@ p {display: block;}
 /* VARIABLES */
 :root {
     /* COLORS */
-    --color-primary: rgba(0, 0, 0, 0.8);
+    --color-primary: rgba(0, 0, 0, 1);
     --color-secondary: rgba(0, 0, 0, 0.5); 
     --color-background: rgb(255, 255, 255, 1);
-    --color-accent-2: rgb(165, 165, 240, 0.6);
+    --color-accent: rgba(111, 111, 255);
+    --color-accent-2: rgba(255, 111, 111);
     /* TEXT */
-    --big-text: 1rem;
-    --normal-text: clamp(0.9rem, 2.5vw, 1rem);
-    --small-text: 0.9rem;
-    --line-height: clamp(1.3rem, 2.5vw, 1.5rem);
+    --normal-text: clamp(1rem, 3vw, 1.4rem);
+    --small-text: clamp(0.6rem, 2vw, 1rem);
+    --title-weight: 600;
+    --line-height: clamp(1.5rem, 3.5vw, 2rem);
     /* IMAGES */
     --image-border-radius: 8px;
     /* SPACING */
     --padding: 1rem;
     --margin: 2rem;
-    --gap: 2rem;
+    --gap: 1rem;
     /* SMOOTH SCROLLING */
     scroll-behavior: smooth;
     /* STYLES */
@@ -51,14 +52,21 @@ p {display: block;}
 }
 
 /* CONTAINERS */
-.name {
+.nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: var(--big-text);
     padding: 0.75rem 0;
 }
-.left-text {
+
+.nav-links {
+    display: flex;
+    justify-content: end;
+    gap: var(--gap);
+}
+
+.description {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -66,21 +74,27 @@ p {display: block;}
     padding: var(--padding);
     align-self: start;
 }
-.right-gallery {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
+
+.description img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
 }
 
-
+.galleries {
+    width: 100%;
+    display: grid;
+    flex-direction: row;
+    align-items: flex-end;
+}
 
 .container-grid {
     width: 100%;
-    /* margin: 0rem auto; */
+    margin: 0rem auto;
     padding: var(--padding);
     display: grid;  
-    grid-template-columns: repeat(auto-fill, minmax(150px, 200px));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: var(--gap);
 }
 
@@ -105,7 +119,7 @@ p {display: block;}
 }
 
 .art-thumbnail:hover {
-    box-shadow: 0px 5px 8px var(--color-secondary);
+    box-shadow: 0px 5px 8px var(--color-accent);
 }
 
 .art-thumbnail img {
@@ -129,11 +143,6 @@ p {display: block;}
     width: 200px;    
 }
 
-.title {
-    color: var(--color-secondary);
-    border-bottom: var(--borders);
-}
-
 .footnote {
     font-size: var(--small-text);
     color: var(--color-secondary);
@@ -141,7 +150,6 @@ p {display: block;}
 
 /* LINKS */
 a { 
-    font-size: 1rem;
     color: var(--color-accent);
     text-decoration: none;
     will-change: color, transform;
@@ -149,22 +157,21 @@ a {
 }
 
 a:visited {
-    color: var(--color-primary);
+    color: var(--color-accent);
 }
 
 a:hover,
 a:focus {
-    color: var(--color-secondary);
+    color: var(--color-accent-2);
     /* transform: translateY(-2px); */
-    /* text-decoration: underline; */
     text-decoration-thickness: 1.2px;
     outline: none;
-    /*  */
     display: inline-block;
     transition: transform 0.1s ease;
 }
 
 a:active {
+    color: var(--color-primary)
     transform: translateY(0);
 }
 
@@ -229,13 +236,19 @@ a:focus-visible {
     white-space: pre-line; /* Preserves line breaks and wraps text */
 }
 
-.modal-close {
+.modal-caption a {
+    color: var(--color-accent);
+}
 
+.modal-caption a:hover {
+    color: var(--color-secondary);
+}
+
+.modal-close {
     position: fixed;
     top: var(--padding);
     right: var(--padding);
-    font-size: var(--big-text
-    );
+    font-size: var(--big-text);
     cursor: pointer;
     transition: color 0.3s ease;
     z-index: 1000;
@@ -250,7 +263,7 @@ a:focus-visible {
     bottom: var(--padding);
     background: transparent;
     border: none;
-    font-size: var(--big-text);
+    font-size: var(--normal-text);
     padding: 0.5rem 1rem;
     cursor: pointer;
     z-index: 1000;
@@ -258,7 +271,7 @@ a:focus-visible {
 }
 
 .modal-nav:hover {
-    color: var(--color-secondary);
+    color: var(--color-accent-2);
 }
 
 .modal-prev {
@@ -312,7 +325,7 @@ header {
     width: 100%;
     background-color: var(--color-background);
     padding: var(--padding);
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     z-index: 100;
@@ -326,25 +339,28 @@ footer {
 
 main {
     width: 100%;
-    margin-top: 4rem;
     display: grid;
-    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    /* grid-template-columns: repeat(2, minmax(150px, 1fr)); */
     flex: 1;
 }
-
 
 ul {
     list-style: none;
     align-items: center;
-
 }
 
 li {
-    padding: 0.3rem 0;
     width: 100%;
     }
+    
+h1 {
+    font-weight: var(--title);
+    font-size: var(--normal-text);
+    color: var(--color-primary);
+}
 
 p {
+    
     color: var(--color-secondary);
 }
 

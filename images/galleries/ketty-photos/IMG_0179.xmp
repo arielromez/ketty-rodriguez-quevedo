@@ -57,7 +57,7 @@
    xmpMM:InstanceID="xmp.iid:10465099-f185-4f31-8a7b-87d2d7be062e"
    dc:format="image/x-canon-cr2"
    crd:CameraProfile="Camera Standard"
-   crd:LookName=""
+   crd:Looknav=""
    crs:Version="18.0"
    crs:ProcessVersion="15.4"
    crs:WhiteBalance="As Shot"
@@ -156,7 +156,7 @@
    crs:BlueSaturation="0"
    crs:HDREditMode="0"
    crs:OverrideLookVignette="False"
-   crs:ToneCurveName2012="Linear"
+   crs:ToneCurvenav2012="Linear"
    crs:CameraProfile="Adobe Standard"
    crs:CameraProfileDigest="4A8FAB62FC709BD9B057AB18748A98E9"
    crs:HasSettings="True"
@@ -229,7 +229,7 @@
    </crs:ColorVariance>
    <crs:Look>
     <rdf:Description
-     crs:Name="Adobe Color"
+     crs:nav="Adobe Color"
      crs:Amount="1"
      crs:UUID="B952C231111CD8E0ECCF14B86BAA7077"
      crs:SupportsAmount="false"

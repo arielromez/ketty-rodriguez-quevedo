@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create modal
     const modal = document.createElement('div');
     modal.id = 'imageModal';
-        modal.innerHTML = `
+    modal.innerHTML = `
                 <span class="modal-close" aria-label="Cerrar imagen">Close</span>
                 <button class="modal-nav modal-prev" aria-label="Previous image">Back</button>
                 <button class="modal-nav modal-next" aria-label="Next image">Next</button>
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const el = e.target;
             el.classList.add('debug-clicked');
             setTimeout(() => el.classList.remove('debug-clicked'), 700);
-            console.log('Clicked element:', el.tagName, el.className || '(no class)', el);
+            console.log('Clicked element:', el.tagnav, el.classnav || '(no class)', el);
         } catch (err) {
             console.error('Debug click handler error', err);
         }
