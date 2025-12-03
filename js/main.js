@@ -102,3 +102,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// HEADER HIDE/SHOW ON SCROLL
+let lastScrollTop = 0;
+const header = document.querySelector('header');
+let scrollThreshold = 100; // Minimum scroll distance before hiding
+
+window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (Math.abs(scrollTop - lastScrollTop) > scrollThreshold) {
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            header.style.transform = 'translateY(0)';
+        }
+        lastScrollTop = scrollTop;
+    }
+}, false);

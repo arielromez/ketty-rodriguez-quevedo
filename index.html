@@ -4,24 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ketty Rodriguez Quevedo</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Ketty Rodriguez Quevedo - Visual Artist">
+    <meta property="og:description" content="Cuban visual artist whose work navigates poetic symbolism through painting.">
+    <meta property="og:image" content="https://arielromez.github.io/ketty-rodriguez-quevedo/images/galleries/2025-the-other-side/fullsize/the-clouds-and-the-sun.jpg">
+    <meta property="og:url" content="https://arielromez.github.io/ketty-rodriguez-quevedo/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ketty Rodriguez Quevedo - Visual Artist">
+    <meta name="twitter:description" content="Cuban visual artist whose work navigates poetic symbolism through painting.">
+    <meta name="twitter:image" content="https://arielromez.github.io/ketty-rodriguez-quevedo/images/galleries/2025-the-other-side/fullsize/the-clouds-and-the-sun.jpg">
+    
     <link rel="icon" href="favicon.ico" type="=image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js" defer></script>
 </head>
 
 <body>             
-        <header>
+         <header>
                 <div class="nav">
-                        <h1>Ketty Rodriguez Quevedo</h1>
-                        <ul class="nav-links">
-                                <li><a href="./pages/about.html">About</a></li>   
-                                <li><a href="./pages/contact.html">Contact</a></li>
-                    </ul> 
-                          
-
+                      <h1><a href="../index.html"><span class="nowrap">Ketty Rodriguez Quevedo</span></a></h1>  
+                    <nav aria-label="About sections">
+                        <ul class="about-nav">
+                        <li><a href="/pages/about.html">About</a></li>
+                        </ul>
+                    </nav>
                 </div>
         </header>
-        
+         <figure class="cover-image">
+        <img 
+            src="/images/galleries/2016-the-times-I-saw-you-kill/fullsize/photo-4.jpg" 
+            data-fullsize="../images/galleries/ketty-photos/fullsize/ketty-rodriguez-quevedo-portrait.jpg"
+            alt="Ketty Rodriguez Quevedo Portrait"
+            title="Ketty Rodriguez Quevedo Portrait"
+            class="fullsize art-img"
+            loading="lazy"
+        >
+        </figure>
         <main>
                 <section class="description">
                         <p>
@@ -36,9 +58,10 @@
                         </p>
                 </section>
 
+                <br>
+
                 <section class="galleries">
-                <!-- <figure class="cover"></figure> -->
-                <p class="container-text">The Other Side</p>
+                <p class="title">The Other Side</p>
                 <article class="container-grid">
                 <figure class="art-thumbnail">
                         <img 
@@ -55,7 +78,7 @@
                                 Acrylic on canvas
                         </figcaption>
                 </figure>
-                  <figure class="art-thumbnail">
+                <figure class="art-thumbnail">
                         <img 
                         src="./images/galleries/2025-the-other-side/thumbnail/the-room-full-of-pillows.jpg" 
                         data-fullsize="./images/galleries/2025-the-other-side/fullsize/the-room-full-of-pillows.jpg"
@@ -145,14 +168,28 @@
                                 48 x 35 in
                                 Oil on canvas
                         </figcaption>
-                </figure>
-            
-            
-              
+                </figure>      
         </article>
-        <p class="container-text">I have realized that <span class="nowrap">I am lying</span></p>
+        
+        <br><br>
+        <p class="title">I have realized that <span class="nowrap">I am lying</span></p>
         <article class="container-grid">
 
+        <figure class="art-thumbnail">
+                <img 
+                src="./images/galleries/2017-i-have-realized-that-i-am-lying/thumbnail/lady-in-orange.jpg" 
+                data-fullsize="./images/galleries/2017-i-have-realized-that-i-am-lying/fullsize/lady-in-orange.jpg"
+                alt="Lady in Orange"
+                title="Lady in Orange (2017)"
+                class="thumbnail art-img"
+                loading="lazy"
+                >
+                <figcaption class="offscreen">
+                        Lady in Orange (2017)
+                        78.7 x 39.4 in
+                        Oil on canvas
+                </figcaption>
+        </figure>
         <figure class="art-thumbnail">
                 <img 
                 src="./images/galleries/2017-i-have-realized-that-i-am-lying/thumbnail/picnic-1.jpg" 
@@ -200,21 +237,6 @@
         </figure>
         <figure class="art-thumbnail">
                 <img 
-                src="./images/galleries/2017-i-have-realized-that-i-am-lying/thumbnail/lady-in-orange.jpg" 
-                data-fullsize="./images/galleries/2017-i-have-realized-that-i-am-lying/fullsize/lady-in-orange.jpg"
-                alt="Lady in Orange"
-                title="Lady in Orange (2017)"
-                class="thumbnail art-img"
-                loading="lazy"
-                >
-                <figcaption class="offscreen">
-                        Lady in Orange (2017)
-                        78.7 x 39.4 in
-                        Oil on canvas
-                </figcaption>
-        </figure>
-        <figure class="art-thumbnail">
-                <img 
                 src="./images/galleries/2017-i-have-realized-that-i-am-lying/thumbnail/photo-1.jpg" 
                 data-fullsize="./images/galleries/2017-i-have-realized-that-i-am-lying/fullsize/photo-1.jpg"
                 alt="Collage Habana gallery, April 2017."
@@ -229,7 +251,9 @@
         
         </article>
 
-        <p class="container-text">The Times <span class="nowrap">I Saw You Kill</span></p>
+        <br><br>
+
+        <p class="title">The Times <span class="nowrap">I Saw You Kill</span></p>
         <article class="container-grid">
         <figure class="art-thumbnail">
                 <img 
@@ -375,7 +399,8 @@
         </figure>
         </article>
 
-        <p class="container-text">Freezing</p>
+        <br><br>
+        <p class="title">Freezing</p>
         <article class="container-grid">
         <figure class="art-thumbnail">
                 <img 
@@ -508,7 +533,10 @@
         </figure>
         </article>
 
-        <p class="container-text">The Year That <span class="nowrap"> Came Next</span></p>
+        
+        <br><br>
+
+        <p class="title">The Year That <span class="nowrap"> Came Next</span></p>
         <article class="container-grid">
         <figure class="art-thumbnail">
                 <img 
