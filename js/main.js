@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.id = 'imageModal';
     modal.innerHTML = `
                 <span class="modal-close" aria-label="Cerrar imagen">Close</span>
-                <button class="modal-nav modal-prev" aria-label="Previous image">Back</button>
+                <button class="modal-nav modal-prev" aria-label="Previous image">Previous</button>
                 <button class="modal-nav modal-next" aria-label="Next image">Next</button>
                 <figure class="modal-figure">
                     <img src="" alt="" id="modalImage">

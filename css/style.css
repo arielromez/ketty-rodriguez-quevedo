@@ -14,18 +14,17 @@ p {display: block;}
 /* VARIABLES */
 :root {
     /* COLORS */
-    --color-primary: rgba(0, 0, 0, 8);
+    --color-primary: rgba(0, 0, 0,0.91);
     --color-secondary: rgba(0, 0, 0, 0.5); 
     --color-background: rgb(255, 255, 255, 0.9);
     --color-accent: rgba(0, 0, 0, 0.3);
     --color-accent-2: rgba(255, 111, 111);
     /* TEXT */
-    --normal-text: clamp(1.25rem, 2.5vw, 1.3rem);
-    --small-text: clamp(0.8rem, 2vw, 1rem);
-    --title-weight: 600;
-    --line-height: clamp(1.8rem, 3vw, 2rem);
+    --normal-text: clamp(1rem, 2.5vw, 1.3rem);
+    --small-text: 1rem;
+    --line-height: clamp(1.5rem, 3.75vw, 1.95rem);
     /* IMAGES */
-    --image-border-radius: 8px;
+    --image-border-radius: 0.5rem;
     /* SPACING */
     --padding: 1rem;
     --margin: 2rem;
@@ -53,10 +52,10 @@ p {display: block;}
 
 /* CONTAINERS */
 .nav {
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 0;
 }
 
 .nav-links {
@@ -65,7 +64,12 @@ p {display: block;}
     gap: var(--gap);
 }
 
+h1.logo a {
+    color: var(--color-primary);
+}
+
 .about-nav {
+    
     display: flex;
     gap: var(--gap);
     list-style: none;
@@ -83,18 +87,18 @@ p {display: block;}
     display: block;
 }
 
-
-
 .cover-image {
+    z-index: -100;
     width: 100%;
     max-width: 1366px;
     margin: 0 auto;
     overflow: hidden;
-    padding-top: 96px;
 }
 
 .cover-image img {
     width: 100%;
+    min-height: 40vh;
+    max-height: 100vh;
     height: auto;
     object-fit: cover;
     display: block;
@@ -110,14 +114,14 @@ p {display: block;}
 }
 
 .description {
-    display: flex;
-    flex-direction: column;
+    columns: 2 200px;
     align-items: flex-start;
-    top: 4rem;
     padding: var(--padding);
-    align-self: start;
-    padding-top: 96px;
+}
 
+.description p:nth-of-type(2) {
+    break-inside: avoid;
+    page-break-inside: avoid;
 }
 
 .galleries {
@@ -149,13 +153,13 @@ p {display: block;}
 }
 
 .art-thumbnail:hover {
-    box-shadow: 0px 5px 8px var(--color-accent);
+    filter: opacity(0.7);
 }
 
 .art-thumbnail img {
     width: 100%;
     height: 100%;
-    filter: grayscale(0.2);
+    filter: grayscale(0.1);
     object-fit: cover;
     flex: 1 1 auto;
     display: block;
@@ -174,12 +178,11 @@ p {display: block;}
 }
 
 .footnote {
-    font-size: var(--small-text);
-    color: var(--color-primary);
+    color: var(--color-accent);
 }
 
 .title {
-    margin-bottom: 0.5rem;
+    padding-bottom: var(--padding)
 }
 
 /* LINKS */
@@ -197,9 +200,9 @@ a:visited {
 
 a:hover,
 a:focus {
+
     color: var(--color-accent);
     /* transform: rotate(-5deg); */
-    text-decoration-thickness: 1.2px;
     outline: none;
     display: inline-block;
     transition: transform 0.1s ease;
@@ -230,7 +233,6 @@ a:focus-visible {
     height: 100%;
     background-color: var(--color-background);
     backdrop-filter: var(--blur);
-    /* backdrop-filter: var(--blur); */
     animation: fadeIn 0.3s ease;
 }
 
@@ -260,7 +262,7 @@ a:focus-visible {
 }
 
 .modal-caption {
-    font-size: small;
+    font-size: var(--small-text);
     color: var(--color-secondary);
     padding: var(--padding);
     display: block;
@@ -273,7 +275,7 @@ a:focus-visible {
 }
 
 .modal-caption a {
-    color: var(--color-accent);
+    color: var(--color-secondary);
 }
 
 .modal-caption a:hover {
@@ -284,7 +286,7 @@ a:focus-visible {
     position: fixed;
     top: var(--padding);
     right: var(--padding);
-    font-size: var(--big-text);
+    font-size: var(--normal-text);
     cursor: pointer;
     transition: color 0.3s ease;
     z-index: 1000;
@@ -307,7 +309,7 @@ a:focus-visible {
 }
 
 .modal-nav:hover {
-    color: var(--color-accent-2);
+    color: var(--color-accent);
 }
 
 .modal-prev {
@@ -360,7 +362,7 @@ header, footer {
     justify-content: space-between;
 }
 header {
-    z-index: 1000;
+    z-index: 998;
     width: 100%;
     background-color: var(--color-background);
     backdrop-filter: var(--blur);
@@ -392,15 +394,19 @@ ul {
 }
     
 h1, h2 {
-    font-weight: var(--title);
     font-size: var(--normal-text);
     color: var(--color-primary);
 }
 
 p {
+    padding-bottom: var(--padding);
     color: var(--color-primary);
 }
 
+hr {
+    color: var(--color-secondary);
+    margin: var(--margin) 0;
+}
 
 
 
