@@ -122,3 +122,20 @@ window.addEventListener('scroll', function() {
         lastScrollTop = scrollTop;
     }
 }, false);
+
+// COVER IMAGE CAROUSEL
+document.addEventListener('DOMContentLoaded', function() {
+    const carouselImages = document.querySelectorAll('.cover-image .carousel-img');
+    if (carouselImages.length > 1) {
+        let currentSlide = 0;
+        
+        function nextSlide() {
+            carouselImages[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % carouselImages.length;
+            carouselImages[currentSlide].classList.add('active');
+        }
+        
+        // Change image every 4 seconds
+        setInterval(nextSlide, 4000);
+    }
+});
