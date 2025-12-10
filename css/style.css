@@ -26,7 +26,7 @@ p {display: block;}
     /* IMAGES */
     --image-border-radius: 0.5rem;
     /* SPACING */
-    --padding: 1rem 1.5rem;
+    --padding: 1rem;
     --margin: 2rem;
     --gap: 2rem;
     /* SMOOTH SCROLLING */

@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const el = e.target;
             el.classList.add('debug-clicked');
             setTimeout(() => el.classList.remove('debug-clicked'), 700);
-            console.log('Clicked element:', el.tagnav, el.classnav || '(no class)', el);
+            console.log('Clicked element:', el.tagName, el.className || '(no class)', el);
         } catch (err) {
             console.error('Debug click handler error', err);
         }
