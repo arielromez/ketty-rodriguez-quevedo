@@ -126,10 +126,13 @@ window.addEventListener('scroll', function() {
 // COVER IMAGE CAROUSEL
 document.addEventListener('DOMContentLoaded', function() {
     const carouselImages = document.querySelectorAll('.cover-image .carousel-img');
+    console.log('Carousel images found:', carouselImages.length);
+    
     if (carouselImages.length > 1) {
         let currentSlide = 0;
         
         function nextSlide() {
+            console.log('Transitioning from slide', currentSlide, 'to', (currentSlide + 1) % carouselImages.length);
             carouselImages[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % carouselImages.length;
             carouselImages[currentSlide].classList.add('active');
@@ -137,5 +140,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Change image every 4 seconds
         setInterval(nextSlide, 4000);
+        console.log('Carousel initialized with', carouselImages.length, 'images');
+    } else {
+        console.log('Carousel not initialized - need at least 2 images');
     }
 });

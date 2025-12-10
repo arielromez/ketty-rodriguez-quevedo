@@ -90,11 +90,10 @@ h1.logo a {
 
 .cover-image {
     width: 100%;
-    z-index: -100;
-    width: 100%;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
+    min-height: 300px;
 }
 
 .cover-image img {
@@ -108,15 +107,13 @@ h1.logo a {
     left: 0;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
-}
-
-.cover-image img:first-child {
-    position: relative;
+    z-index: 0;
 }
 
 .cover-image img.active {
     opacity: 1;
     z-index: 1;
+    position: relative;
 }
 
 .art-portrait {
