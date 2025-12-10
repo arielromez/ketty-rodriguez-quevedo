@@ -110,9 +110,13 @@ h1.logo a {
     transition: opacity 1.5s ease-in-out;
 }
 
+.cover-image img:first-child {
+    position: relative;
+}
+
 .cover-image img.active {
     opacity: 1;
-    position: relative;
+    z-index: 1;
 }
 
 .art-portrait {
