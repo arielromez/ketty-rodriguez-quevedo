@@ -95,33 +95,54 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Close with Escape key
+    // Close with Escape key and navigate with arrow keys
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             modal.classList.remove('active');
+        } else if (modal.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(currentIndex);
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            }
         }
     });
 });
 
 // HEADER HIDE/SHOW ON SCROLL
-let lastScrollTop = 0;
-const header = document.querySelector('header');
-let scrollThreshold = 100; // Minimum scroll distance before hiding
-
-window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+(function() {
+    let lastScrollTop = 0;
+    let ticking = false;
+    const header = document.querySelector('header');
     
-    if (Math.abs(scrollTop - lastScrollTop) > scrollThreshold) {
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down
+    if (!header) return;
+    
+    function updateHeader() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 150) {
+            // Scrolling down - hide header
             header.style.transform = 'translateY(-100%)';
-        } else {
-            // Scrolling up
+        } else if (scrollTop < lastScrollTop || scrollTop <= 150) {
+            // Scrolling up or near top - show header
             header.style.transform = 'translateY(0)';
         }
-        lastScrollTop = scrollTop;
+        
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        ticking = false;
     }
-}, false);
+    
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    }, { passive: true });
+})();
 
 // COVER IMAGE CAROUSEL
 document.addEventListener('DOMContentLoaded', function() {
