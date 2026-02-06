@@ -1,8 +1,8 @@
-const year = document.getElementById("year")
+const year = document.getElementById("year");
 if (year) {
-    const thisYear = new Date().getFullYear()
-    year.setAttribute("datatime", thisYear)
-    year.textContent = thisYear
+    const thisYear = new Date().getFullYear();
+    year.setAttribute("datatime", thisYear);
+    year.textContent = thisYear;
 }
 
 // IMAGE MODAL ON CLICK
@@ -30,9 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const modalImg = document.getElementById('modalImage');
         const captionBox = document.querySelector('#imageModal .modal-caption');
         
-        // Source - use fullsize version if available, otherwise use original src
-        const fullsizeUrl = img.getAttribute('data-fullsize');
-        modalImg.src = fullsizeUrl || img.src;
+        // Source - use src directly since we now use fullsize images only
+        modalImg.src = img.src;
         
         // Caption priority: figure figcaption > title attr > alt attr > empty
         const fig = img.closest('figure');
@@ -113,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// HEADER HIDE/SHOW ON SCROLL
+// HEADER SCROLL BEHAVIOR
 (function() {
     let lastScrollTop = 0;
     let ticking = false;
@@ -124,12 +123,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateHeader() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        if (scrollTop > lastScrollTop && scrollTop > 150) {
-            // Scrolling down - hide header
-            header.style.transform = 'translateY(-100%)';
-        } else if (scrollTop < lastScrollTop || scrollTop <= 150) {
-            // Scrolling up or near top - show header
-            header.style.transform = 'translateY(0)';
+        if (scrollTop > 10) {
+            // User has scrolled - move header to top
+            header.classList.add('scrolled');
+        } else {
+            // At top of page - header at center
+            header.classList.remove('scrolled');
         }
         
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
@@ -144,9 +143,66 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { passive: true });
 })();
 
+// LAZY LOADING FOR ART THUMBNAILS
+document.addEventListener('DOMContentLoaded', function() {
+    const lazyImages = document.querySelectorAll('.art-thumbnail img[data-src]');
+    console.log('Found', lazyImages.length, 'images for lazy loading');
+    
+    if ('IntersectionObserver' in window && lazyImages.length > 0) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    console.log('Loading image:', img.dataset.src);
+                    img.classList.add('loading');
+                    
+                    // Load the image
+                    const actualSrc = img.dataset.src;
+                    img.src = actualSrc;
+                    
+                    img.onload = function() {
+                        console.log('Image loaded successfully:', actualSrc);
+                        img.classList.remove('loading');
+                        img.classList.add('loaded');
+                        img.removeAttribute('data-src');
+                    };
+                    
+                    img.onerror = function() {
+                        console.error('Failed to load image:', actualSrc);
+                        img.classList.remove('loading');
+                    };
+                    
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            // Load images when they're 50px away from viewport
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+        
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+            console.log('Observing image:', img.dataset.src);
+        });
+        
+        console.log('Lazy loading initialized successfully');
+    } else if (lazyImages.length > 0) {
+        // Fallback for browsers without IntersectionObserver
+        console.log('IntersectionObserver not supported, loading all images immediately');
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+            img.classList.add('loaded');
+            img.removeAttribute('data-src');
+        });
+    } else {
+        console.log('No images found with data-src attributes');
+    }
+});
+
 // COVER IMAGE CAROUSEL
 document.addEventListener('DOMContentLoaded', function() {
-    const carouselImages = document.querySelectorAll('.cover-image .carousel-img');
+    const carouselImages = document.querySelectorAll('.car-cover-img .carousel-img');
     console.log('Carousel images found:', carouselImages.length);
     
     if (carouselImages.length > 1) {
