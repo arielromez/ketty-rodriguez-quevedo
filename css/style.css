@@ -21,7 +21,7 @@ p {
 :root {
     /* COLORS */
     --color-primary: rgba(0, 0, 0, 0.8);
-    --color-secondary: rgba(0, 0, 0, 0.4); 
+    --color-secondary: rgba(0, 0, 0, 0.5); 
     --color-background: rgb(255, 255, 255, 0.9);
     --color-accent: rgb(0, 0, 255, 0.8);
     --color-accent-2: rgb(255, 0, 0, 0.8);
@@ -30,8 +30,8 @@ p {
     --normal-text: clamp(1rem, 2.5vw, 1.2rem);
     --small-text: 1rem;
     --large-text: clamp(1.5rem, 4.5vw, 2rem);
-    --line-height: clamp(1.75rem, 3.5vw, 2rem);
-    --line-height-large: clamp(2rem, 5vw, 2.5rem);
+    --line-height: clamp(1.75rem, 5.5vw, 2.25rem);
+    --line-height-large: clamp(2.25rem, 5vw, 2.5rem);
     
     /* IMAGES */
     --image-border-radius: 0.2rem;
@@ -59,8 +59,8 @@ p {
 }
 
 .offscreen {
-    position: absolute;
-    left: -100000px;
+    position: absolute !important;
+    left: -100000px !important;
 }
 
 .box-shadow {
@@ -103,7 +103,6 @@ header, footer {
 }
 
 header {
-    backdrop-filter: var(--blur);
     z-index: 998;
     width: 100%;
     padding: var(--padding);
@@ -113,6 +112,10 @@ header {
     right: 0;
     transition: transform 0.3s ease-in-out;
     transform: translateY(0);
+}
+
+header.scrolled {
+    transform: translateY(-100%);
 }
 
 footer {
@@ -162,11 +165,11 @@ ul li {
 
 /* BUTTON-STYLE LINKS */
 .btn {
-    background: transparent;
+    color: var(--color-accent-2);
+    backdrop-filter: var(--blur);
     border: var(--borders);
     border-radius: var(--border-radius);
     font-size: var(--normal-text);
-    color: var(--color-secondary);
     padding: 0.25rem 1rem;
     cursor: pointer;
     transition: color 0.3s ease;
@@ -265,14 +268,15 @@ footer a {
 
 .car-cover-img figcaption{
     width: 100%;
-    color: var(--color-background);
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, var(--color-background) 10%, var(--color-background) 90%, rgba(255, 255, 255, 0) 100%);
+    line-height: var(--line-height-large);
+    color: var(--color-primary);
     text-align: center;
     position: absolute;
     bottom: 50%;
     left: 50%;
     transform: translate(-50%, 50%);
     padding: var(--padding);
-    backdrop-filter: var(--blur);
 }
 
 .car-cover-img img {
@@ -434,11 +438,28 @@ footer a {
 }
 
 .modal-caption a {
-    color: var(--color-secondary);
+    color: var(--color-accent-2) !important;
+    backdrop-filter: var(--blur);
+    border: var(--borders);
+    border-radius: var(--border-radius);
+    font-size: var(--normal-text);
+    padding: 0.25rem 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    transform: none !important;
 }
 
-.modal-caption a:hover {
-    color: var(--color-secondary);
+.modal-caption a:visited {
+    color: var(--color-accent-2) !important;
+}
+
+.modal-caption a:hover,
+.modal-caption a:focus {
+    color: var(--color-accent) !important;
+    border-color: var(--color-accent);
+    transform: none !important;
 }
 
 .modal-close {
@@ -509,7 +530,9 @@ footer a {
 
 /* LG -> Large */
 @media (min-width: 1024px) {
-   
+    .container-grid {
+        grid-template-columns: repeat(3, minmax(150px, 1fr));
+    }
 }
 
 /* XL -> Extra Large */

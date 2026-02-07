@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Caption priority: figure figcaption > title attr > alt attr > empty
         const fig = img.closest('figure');
         const figcap = fig ? fig.querySelector('figcaption') : null;
-        const rawCaption = figcap && figcap.textContent.trim() ? figcap.textContent.trim() : (img.getAttribute('title') || img.getAttribute('alt') || '');
-        captionBox.textContent = rawCaption;
+        const rawCaption = figcap && figcap.innerHTML.trim() ? figcap.innerHTML.trim() : (img.getAttribute('title') || img.getAttribute('alt') || '');
+        captionBox.innerHTML = rawCaption;
         
         if (!rawCaption) {
             captionBox.style.display = 'none';
@@ -123,11 +123,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateHeader() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        if (scrollTop > 10) {
-            // User has scrolled - move header to top
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+            // Scrolling down and past threshold - hide header
             header.classList.add('scrolled');
-        } else {
-            // At top of page - header at center
+        } else if (scrollTop < lastScrollTop || scrollTop <= 50) {
+            // Scrolling up or near top - show header
             header.classList.remove('scrolled');
         }
         
