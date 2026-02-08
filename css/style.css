@@ -165,7 +165,7 @@ ul li {
 
 /* BUTTON-STYLE LINKS */
 .btn {
-    color: var(--color-accent-2);
+    background-color: transparent;
     backdrop-filter: var(--blur);
     border: var(--borders);
     border-radius: var(--border-radius);
@@ -176,6 +176,10 @@ ul li {
     text-decoration: none;
     display: inline-block;
 }
+
+.about-nav .btn {
+    color: var(--color-background);
+}   
 
 .btn:hover {
     color: var(--color-accent);
@@ -273,7 +277,7 @@ footer a {
     color: var(--color-background);
     text-align: center;
     position: absolute;
-    bottom: 50%;
+    bottom: 50vh;
     left: 50%;
     transform: translate(-50%, 50%);
     padding: var(--padding);
@@ -281,7 +285,7 @@ footer a {
 
 .car-cover-img img {
     width: 100%;
-    height: 100vh;
+    height: 95vh;
     object-fit: cover;
     grid-area: 1 / 1;
     opacity: 0;
