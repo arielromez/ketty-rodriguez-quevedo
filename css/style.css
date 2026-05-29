@@ -21,17 +21,25 @@ p {
 :root {
     /* COLORS */
     --color-primary: rgba(0, 0, 0, 0.8);
-    --color-secondary: rgba(0, 0, 0, 0.5); 
-    --color-background: rgb(255, 255, 255, 0.9);
-    --color-accent: rgb(0, 0, 255, 0.8);
-    --color-accent-2: rgb(255, 0, 0, 0.8);
+    --color-secondary: rgb(128, 128, 128); 
+    --color-background: rgba(255, 255, 255, 0.8);
+    --color-accent: rgba(0, 0, 255, 0.8);
+    --color-accent-2: rgba(255, 0, 0, 0.8);
+    --background-gradient: linear-gradient(
+        90deg,
+        var(--color-background) 0%,
+        rgba(0, 0, 0, 0.1) 100%
+        /* var(--color-background) 100% */
+    );
+    
+
     
     /* TEXT */
     --normal-text: clamp(1rem, 2.5vw, 1.2rem);
     --small-text: 1rem;
-    --large-text: clamp(1.5rem, 4.5vw, 2rem);
+    --large-text: clamp(1.5rem, 4.5vw, 2.2rem);
     --line-height: clamp(1.75rem, 5.5vw, 2.25rem);
-    --line-height-large: clamp(2.25rem, 5vw, 2.5rem);
+    --line-height-large: clamp(2.2rem, 5vw, 2.8rem);
     
     /* IMAGES */
     --image-border-radius: 0.2rem;
@@ -44,7 +52,8 @@ p {
     /* STYLES */
     --border-radius: 2rem;
     --shadows: 0px 0px 8px var(--color-secondary);
-    --borders: 1px solid var(--color-secondary);
+    --borders: 1px solid var(--background-gradient);
+    --text-shadows: 0px 0px 15px var(--color-primary);
     
     /* FILTERS */
     --blur: blur(20px);
@@ -157,17 +166,24 @@ ul li {
 /* NAVIGATION */
 .about-nav {
     display: flex;
-    justify-content: center;
+    justify-content: stretch;
+    align-items: stretch;
+    gap: 0.75rem;
+    width: 100%;
+    list-style: none;
+    padding: 0;
 }
 .about-nav li {
-    margin: 0 0.5rem;
+    display: flex;
+    flex: 1 1 0;
+    margin: 0;
 }
 
 /* BUTTON-STYLE LINKS */
 .btn {
-    background-color: transparent;
+    background: var(--background-gradient);
     backdrop-filter: var(--blur);
-    border: var(--borders);
+    /* border: var(--borders); */
     border-radius: var(--border-radius);
     font-size: var(--normal-text);
     padding: 0.25rem 1rem;
@@ -178,7 +194,9 @@ ul li {
 }
 
 .about-nav .btn {
-    color: var(--color-background);
+    width: 100%;
+    display: block;
+    text-align: left;
 }   
 
 .btn:hover {
@@ -252,7 +270,7 @@ footer a {
 
 .column-text {
     margin-top: 2rem;
-    columns: 2 200px;
+    /* columns: 2 200px; */
     gap: var(--gap);
     align-items: flex-start;
 }
@@ -271,6 +289,7 @@ footer a {
 }
 
 .car-cover-img figcaption{
+    font-size: var(--large-text);
     width: 100%;
     backdrop-filter: var(--blur);
     line-height: var(--line-height-large);
@@ -281,6 +300,8 @@ footer a {
     left: 50%;
     transform: translate(-50%, 50%);
     padding: var(--padding);
+    text-shadow: var(--text-shadows);
+    border: var(--borders);
 }
 
 .car-cover-img img {
